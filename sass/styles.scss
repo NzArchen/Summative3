@@ -6,3 +6,57 @@
   color: red;
   background-color: $purple;
 }
+
+#bla {
+	margin-top:-10em;
+	height:300px;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:center;
+	background-image:url("images/Vege-head.jpg");
+	border:20px white solid;
+
+}
+
+.box, .box2, .box3 {
+	height:40vw;
+	width:100%;
+
+	@include media-breakpoint-up(lg){ 
+		height:35vw;
+	}
+
+}
+
+.box{
+	// background-color: #FF5B2A;
+	background-image:url("images/Truffle-Falls.jpg");
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:cover;
+
+}
+
+.box2{
+	background-image:url("images/Train.jpg");
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:cover;
+   
+}
+.box3{
+	background-image:url("images/Spaghetti.jpg");
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:cover;
+   
+}
+
+
+
+
+
+
+
+
+
