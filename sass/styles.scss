@@ -8,22 +8,59 @@
 }
 
 #bla {
-	margin-top:-10em;
-	height:300px;
+	margin-top:-5em;
+	height:200px;
+	width:200px;
 	background-size:cover;
 	background-repeat:no-repeat;
 	background-position:center;
 	background-image:url("images/Vege-head.jpg");
-	border:20px white solid;
+	border:2px white solid;
+	-webkit-box-shadow: -2px 12px 61px -14px rgba(0,0,0,0.58);
+	-moz-box-shadow: -2px 12px 61px -14px rgba(0,0,0,0.58);
+	box-shadow: -2px 12px 61px -14px rgba(0,0,0,0.58);
+
+	@include media-breakpoint-up(md){ 
+		height:30vw;
+		width:20vw;
+		margin-top:-10em;
+		border:5px white solid;
+	}
+	@include media-breakpoint-up(lg){ 
+		height:20vw;
+		width:15vw;
+		margin-top:-15em;
+		border:10px white solid;
+	}
+
 
 }
+
+#designer_name{
+	margin:auto;
+	text-align:center;
+	margin-top:10px;
+}
+#designer_name h1{
+	font-size:18px;
+
+	@include media-breakpoint-up(md){ 
+	font-size:30px;
+	}
+	@include media-breakpoint-up(lg){ 
+	font-size:40px;
+	margin-top:15px;
+	}
+}
+
+
 
 .box, .box2, .box3 {
 	height:40vw;
 	width:100%;
 
 	@include media-breakpoint-up(lg){ 
-		height:35vw;
+		height:30vw;
 	}
 
 }
@@ -50,6 +87,21 @@
 	background-position:center;
 	background-size:cover;
    
+}
+
+.intro{
+	margin:2em 2em;
+	text-align:center;
+
+}
+
+.statistics{
+	margin:auto;
+	width:80%;
+	height:150px;
+	border:3px red solid;
+}
+
 }
 
 
