@@ -41,7 +41,7 @@ $(function() {
     columnWidth: ".grid__sizer",
     // gutter: 10,
     gutter: 23,
-    percentPosition: true,
+    // percentPosition: true,
     fitWidth: true,
   });
   // Image replacement handler

@@ -156,12 +156,12 @@ header {
 .grid__sizer,
 .grid__item {
   position: relative;
-  width: 19.35%;
+  width: 20%;
   min-width: remy(260px);
 }
 .grid__item {
-  // margin-bottom: .9375rem;
-  margin-bottom: 23px;
+  margin-bottom: .9375rem;
+  // margin-bottom: 23px;
   border-radius: remy(4px);
   overflow: hidden;
 }
@@ -195,7 +195,17 @@ a,
 }
 
 
+// =============================ABOUT====================================
 
-
+.container{
+	margin-top:5em;
+}
+.container>p{
+	margin-top:2em;
+}
+.embed-responsive{
+	height:480px;
+	width:640px;
+}
 
 
