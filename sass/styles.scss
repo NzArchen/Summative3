@@ -7,7 +7,7 @@
   background-color: $purple;
 }
 
-#bla {
+#hero {
 	margin-top:-5em;
 	height:200px;
 	width:200px;
@@ -195,6 +195,9 @@ a,
 }
 
 
+
+
+
 // =============================ABOUT====================================
 
 .container{
@@ -203,9 +206,12 @@ a,
 .container>p{
 	margin-top:2em;
 }
-.embed-responsive{
-	height:480px;
-	width:640px;
-}
 
+// =============================Video====================================
+
+.embed-responsive{
+	margin-top:5em;
+	height:auto;
+
+}
 
