@@ -7,7 +7,7 @@ $(function() {
   let key = 'VMNZH093QVRWvJhDd5cMBVFv30qgV2Bi'; //form my behance account api
 
 	let urlProjects = 'https://api.behance.net/v2/users/Carlaveggio/projects?client_id='+key;
-	console.log(urlProjects);
+	// console.log(urlProjects);
 
   $.ajax({
     url:urlProjects,
@@ -23,7 +23,7 @@ $(function() {
 
         let output = itemTemplate(project);
         $(output).appendTo('.grid.mx-auto');
-        console.log(project);
+        // console.log(project);
       }
 
        // Masonry grid setup
@@ -63,7 +63,7 @@ $(function() {
     let projectid = $(target).data('projectid');
 
     let urlProject = 'http://www.behance.net/v2/projects/'+projectid+'?api_key='+key;
-    console.log(urlProject);
+    // console.log(urlProject);
 
     $.ajax({
       url:urlProject,
@@ -73,7 +73,7 @@ $(function() {
         let output = projectDetailsTemplate(project);
         $('.modal-content').empty();
         $('.modal-content').append(output);
-        console.log(project);
+        // console.log(project);
       }
     });
 
