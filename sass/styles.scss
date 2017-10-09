@@ -164,6 +164,11 @@ header {
   // margin-bottom: 23px;
   border-radius: remy(4px);
   overflow: hidden;
+  height: 15rem;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; 
 }
 .grid__item--high,
 .grid__item--high img {height: remy(480px);}
@@ -194,6 +199,19 @@ a,
 	border:2px red solid
 }
 
+.modal-heaer>h2{
+	margin-top:1em;
+}
+
+.modal-body>p{
+	margin:1em 1em;
+
+}
+.modal-footer{
+	display:flex;
+	justify-content:space-around;
+
+}
 
 
 

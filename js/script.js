@@ -44,14 +44,47 @@ $(function() {
   
 
   // Image replacement handler
-  $(document).on("click", ".js-button", function() {
-    var imageSrc = $(this).parents(".grid__item").find("img").attr("src");
-    $(".js-download").attr("href", imageSrc);
-    $(".js-modal-image").attr("src", imageSrc);
-    $(document).on("click", ".js-heart", function() {
-      $(this).toggleClass("active");
+  // $(document).on("click", ".grid__item", function(e) {
+  //   e.preventDefault();
+
+  //   var imageSrc = $(this).css("background-image").replace(/url\(|"|\)/g,'');
+  //   $(".js-modal-image").attr("src", imageSrc);
+  // });
+
+  //project modal popup
+
+  let projectDetailsHTML = $('#project-details-template').text();
+  let projectDetailsTemplate = Template7(projectDetailsHTML).compile();
+
+  $('#modalPicture').on('show.bs.modal',function(e){
+
+
+    let target = e.relatedTarget; 
+    let projectid = $(target).data('projectid');
+
+    let urlProject = 'http://www.behance.net/v2/projects/'+projectid+'?api_key='+key;
+    console.log(urlProject);
+
+    $.ajax({
+      url:urlProject,
+      dataType:'jsonp',
+      success:function(res){
+        let project = res.project;
+        let output = projectDetailsTemplate(project);
+        $('.modal-content').empty();
+        $('.modal-content').append(output);
+        console.log(project);
+      }
     });
+
+
+
   });
 
+
+
 });
+
+
+
 
