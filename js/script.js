@@ -81,6 +81,56 @@ $(function() {
 
   });
 
+  // contact from
+
+  $('#characterLeft').text('140 characters left');
+    $('#message').keydown(function () {
+        var max = 140;
+        var len = $(this).val().length;
+        if (len >= max) {
+            $('#characterLeft').text('You have reached the limit');
+            $('#characterLeft').addClass('red');
+            $('#btnSubmit').addClass('disabled');            
+        } 
+        else {
+            var ch = max - len;
+            $('#characterLeft').text(ch + ' characters left');
+            $('#btnSubmit').removeClass('disabled');
+            $('#characterLeft').removeClass('red');            
+        }
+    }); 
+
+
+    //map
+
+    let center = [51.539076, -0.100367] //center of map
+
+    let map = L.map('map').setView(center,15);// set view for map 
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXJjaGVuIiwiYSI6ImNqNmxncXh3YzFnYzUzOGxtbDlvb2FqYjkifQ.kYzWwDvJWNa7ZPfH0VBx2g').addTo(map);
+
+    let studio= [                  // mark on the map
+          {
+            latlng:[51.539076, -0.100367], 
+            description:'<h2>Carl Warner Studio<h2><div class= "studio"></div>',
+            iconImage:'css/images/flag.svg'
+          }
+          ];
+
+    _(studio).each(function(studio){  // icon for mark
+
+    let studioIcon = L.icon({
+                  iconUrl:studio.iconImage, // link to icon file
+                  iconSize:[30,30]
+                });
+
+    let marker = L.marker(studio.latlng,{icon:studioIcon}).addTo(map); // put the icon to map
+
+    marker.bindPopup('<div class="supermarket">'+studio.description+'</div>') //  popup for description when click
+
+  });
+
+
 
 
 });

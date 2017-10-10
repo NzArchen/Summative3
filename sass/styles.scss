@@ -169,7 +169,12 @@ header {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center; 
+
+
 }
+
+
+
 .grid__item--high,
 .grid__item--high img {height: remy(480px);}
 img {
@@ -216,6 +221,10 @@ a,
 
 
 
+
+
+
+
 // =============================ABOUT====================================
 
 .container{
@@ -233,3 +242,24 @@ a,
 
 }
 
+// =============================contact====================================
+
+.red{
+    color:red;
+}
+.form-area
+{
+    background-color: #FAFAFA;
+	padding: 10px 40px 60px;
+	margin: 10px 0px 60px;
+	
+}
+
+// =============================contact====================================
+
+
+#map{
+	margin-top: 5vh;
+	height:50vh;
+	border:1px red solid;
+}
