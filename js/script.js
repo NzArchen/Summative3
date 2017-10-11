@@ -7,7 +7,7 @@ $(function() {
   let key = 'VMNZH093QVRWvJhDd5cMBVFv30qgV2Bi'; //form my behance account api
 
 	let urlProjects = 'https://api.behance.net/v2/users/Carlaveggio/projects?client_id='+key;
-	// console.log(urlProjects);
+	console.log(urlProjects);
 
   $.ajax({
     url:urlProjects,
@@ -37,21 +37,6 @@ $(function() {
       });
     }
   });
-
-
- 
-
-  
-
-  // Image replacement handler
-  // $(document).on("click", ".grid__item", function(e) {
-  //   e.preventDefault();
-
-  //   var imageSrc = $(this).css("background-image").replace(/url\(|"|\)/g,'');
-  //   $(".js-modal-image").attr("src", imageSrc);
-  // });
-
-  //project modal popup
 
   let projectDetailsHTML = $('#project-details-template').text();
   let projectDetailsTemplate = Template7(projectDetailsHTML).compile();
@@ -112,12 +97,13 @@ $(function() {
     let studio= [                  // mark on the map
           {
             latlng:[51.539076, -0.100367], 
-            description:'<h2>Carl Warner Studio<h2><div class= "studio"></div>',
+            description:'<h3>Carl Warner Studio<h3><div class="studio"></div>',
             iconImage:'css/images/flag.svg'
           }
           ];
 
-    _(studio).each(function(studio){  // icon for mark
+    // _(studio).each(function(studio){  // icon for mark
+    studio.forEach(function(studio){  // icon for mark
 
     let studioIcon = L.icon({
                   iconUrl:studio.iconImage, // link to icon file
@@ -130,10 +116,13 @@ $(function() {
 
   });
 
-
-
-
 });
+
+// pie chart
+
+
+
+
 
 
 
