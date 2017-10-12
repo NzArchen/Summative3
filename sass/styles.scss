@@ -97,11 +97,11 @@
 // ===========================Pie Chart====================================
 
 .designer{
-	height:50px;
 	margin:auto;
 	@include media-breakpoint-up(md){
 		display: flex;
 	} 
+	margin-bottom:60px;
 }
 .col1{
 	height:25px;
