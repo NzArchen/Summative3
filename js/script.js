@@ -1,10 +1,11 @@
+let key = 'VMNZH093QVRWvJhDd5cMBVFv30qgV2Bi'; //form my behance account api
+
 $(function() {
 
   let itemHTML = $('#item-template').text();
   let itemTemplate = Template7(itemHTML).compile();
 
   // jquery coding inside this function
-  let key = 'VMNZH093QVRWvJhDd5cMBVFv30qgV2Bi'; //form my behance account api
 
 	let urlProjects = 'https://api.behance.net/v2/users/Carlaveggio/projects?client_id='+key;
 	console.log(urlProjects);
@@ -120,10 +121,145 @@ $(function() {
 
 // pie chart
 
+var width = 250;
+var height = 250;
+var marginTop = 30;
+var marginLeft = 30;
+
+// var data = [
+//       {
+//         city:'Dunedin',
+//         size: 20
+//       },
+//       {
+//         city:'Christchurch',
+//         size: 40
+//       },
+//       {
+//         city:'Wellington',
+//         size: 60
+//       },
+//       {
+//         city:'Auckland',
+//         size: 80
+//       }
+//     ];
+
+var data = [];
+var call1 = $.ajax({
+  url: 'https://api.behance.net/v2/users/Carlaveggio?client_id='+key,
+  dataType: 'jsonp'
+});
+var call2 = $.ajax({
+  url: 'https://api.behance.net/v2/users/tinapicardphoto?client_id='+key,
+  dataType: 'jsonp'
+});
+var call3 = $.ajax({
+  url: 'https://api.behance.net/v2/users/ilonaveresk?client_id='+key,
+  dataType: 'jsonp'
+});
+var call4 = $.ajax({
+  url: 'https://api.behance.net/v2/users/andrejosselin?client_id='+key,
+  dataType: 'jsonp'
+});
+
+$.when(call1, call2, call3, call4).done(function(res1,res2,res3,res4){
+  // add user names to data
+  res1[0].user.stats.userName = res1[0].user.display_name;
+  res2[0].user.stats.userName = res2[0].user.display_name;
+  res3[0].user.stats.userName = res3[0].user.display_name;
+  res4[0].user.stats.userName = res4[0].user.display_name;
+
+  // add stats to array
+  data.push(res1[0].user.stats);
+  data.push(res2[0].user.stats);
+  data.push(res3[0].user.stats);
+  data.push(res4[0].user.stats);
+
+  console.log(data);
+
+  makePieChart('views');
+  makePieChart('appreciations');
+  makePieChart('followers');
+});
+
+function makePieChart(chartType) {
+  var radius = Math.min(width,height)/2;
+
+  var colGen = d3.scaleOrdinal()
+          .range(['#F6790F','#999B58','#EDBA81','#F6B930',]);
+
+  var pieDataGen = d3.pie()
+            .sort(null)
+            .value(function(d){ return d[chartType] });
 
 
+  var pieData = pieDataGen(data);
 
 
+  var arcGen = d3.arc()
+          .outerRadius(radius)
+          .innerRadius(radius/1.8)
+          .cornerRadius(0);
+
+  var arcLabelGen = d3.arc()
+          .outerRadius(radius)
+          .innerRadius(radius/2);
 
 
+  var chart = d3.select('.' + chartType)
+          .append('g')
+          .attr('transform','translate('+marginLeft+','+marginTop+')');
+
+  var pie = chart.append('g')
+          .attr('transform','translate('+radius+','+radius+')');
+
+  pie.selectAll('.arc')
+    .data(pieData)
+    .enter()
+    .append('path')
+    .attr('id',function(d,i){ return 'arc'+i})
+    .attr('class','arc')
+    .attr('d',arcGen)
+    .attr('fill',function(d){ return colGen(d.data.userName) })
+
+  pie.selectAll('.size')
+    .data(pieData)
+    .enter()
+    .append('text')
+    .style('text-anchor','middle')
+    .style('alignment-baseline','middle')
+    .style('font-family','Verdana')
+    .style('font-size','12')
+    .attr('transform',function(d){ return 'translate('+arcLabelGen.centroid(d)+')'})
+    .text(function(d){ return d.data[chartType] });
+
+  // pie.selectAll('.user')
+  //   .data(pieData)
+  //   .enter() 
+  //   .append('text')
+  //   .style('font-size','10')
+  //   .attr('dy', -5)
+  //   .attr('dx', 40)
+  //   .append('textPath')
+  //   .attr('xlink:href',function(d,i){ return '#arc'+i})
+  //   .text(function(d){ return d.data.userName})
+
+  // titles
+  pie.append('text')
+    .text(function() {
+      if (chartType === 'appreciations') {
+        return '\uf164'
+      } else if (chartType === 'followers') {
+        return '\uf234'
+      } else if (chartType === 'views') {
+        return '\uf06e'
+      }
+    })
+    .attr('transform','translate(0,0)')
+    .attr('text-anchor','middle')
+    .attr('alignment-baseline','middle')
+    .attr('class','fa fa-3x')
+    .style('fill', '#5E5B60')
+}
 

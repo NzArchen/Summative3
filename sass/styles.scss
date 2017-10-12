@@ -94,20 +94,46 @@
 	text-align:center;
 
 }
+// ===========================Pie Chart====================================
+
+.designer{
+	height:50px;
+	margin:auto;
+	@include media-breakpoint-up(md){
+		display: flex;
+	} 
+}
+.col1{
+	height:25px;
+	background-color:#F6790F;
+}
+.col2{
+	height:25px;
+	background-color:#999B58;
+}
+.col3{
+	height:25px;
+	background-color:#EDBA81;
+}
+.col4{
+	height:25px;
+	background-color:#F6B930;
+}
+.col-md-3 p{
+	text-align:center;
+	padding-bottom:20px;
+	
+}
+
 
 .statistics{
 	margin:auto;
 	width:80%;
-	height:20vw;
-	border:3px red solid;
 	display:flex;
 	
 }
 
 .pieChart{
-	width: 15vw;
-	height: 15vw;
-	border:3px gray solid;
 	display: block;
 	margin:auto;
 }
